@@ -6,21 +6,16 @@ fn main() {
     use docx_rust::document::Paragraph;
     use docx_rust::DocxFile;
     
-    let docx = DocxFile::from_file("11.docx").unwrap();
-    let mut docx = docx.parse().unwrap();
+    let docx_file = DocxFile::from_file("11.docx").unwrap();
+    let docx = docx_file.parse().unwrap();
 
     //println!("{:#?}", docx);
+    //println!("{:#?}", docx.document);
 
-    println!("{:#?}", docx.document);
+    //println!("{:#?}", docx.document.body);
+
+    println!("{:#?}", docx.document.body.content);
 
 
-    for (key, value) in docx.headers.iter() {
-        println!("key: {}", key);
-      }
 
-    
-    let para = Paragraph::default().push_text("Lorem Ipsum");
-    docx.document.push(para);
-    
-    docx.write_file("12.docx").unwrap();
 }
